@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>A Special Gift Journey</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Background Elements -->
+        <div class="bg-particles" id="particles"></div>
+
+        <!-- UI Layer -->
+        <div id="ui-layer">
+            <header class="glass-header">
+                <div class="header-main">
+                    <div class="stage-info">
+                        <h1 id="stage-title">Stage 1</h1>
+                        <span id="stage-subtitle">The Beginning</span>
+                    </div>
+                    <div class="controls-group">
+                        <div id="timer-display" class="hidden">00:00</div>
+                        <button id="settings-btn" class="icon-btn" aria-label="Settings">⚙️</button>
+                    </div>
+                </div>
+                <div id="progress-area">
+                    <div class="stage-pills">
+                        <div class="pill active">1</div>
+                        <div class="pill">2</div>
+                        <div class="pill">3</div>
+                        <div class="pill">4</div>
+                        <div class="pill">5</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progress-fill" style="width: 20%"></div>
+                    </div>
+                </div>
+            </header>
+
+            <div id="game-area">
+                <canvas id="puzzle-canvas"></canvas>
+                <div id="loading-indicator" class="hidden">Loading Memory...</div>
+            </div>
+
+            <div id="controls">
+                <button id="help-btn" class="icon-btn" aria-label="Show Hint">
+                    👁️ <span class="tooltip">Hint</span>
+                </button>
+            </div>
+
+            <!-- Overlays -->
+            <div id="stage-complete-modal" class="modal hidden">
+                <div class="modal-content glass-panel">
+                    <h2>Beautiful!</h2>
+                    <p class="completion-msg">Memory Restored.</p>
+                    <div class="star-rating">
+                        <span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <button id="next-stage-btn" class="primary-btn pulse">Continue Journey</button>
+                </div>
+            </div>
+
+            <div id="final-reveal" class="fullscreen-overlay hidden">
+                <div class="reveal-content glass-panel">
+                    <h1 class="animate-pop-in">Happy Birthday!</h1>
+                    <p class="reveal-msg animate-slide-up">You've unlocked all the memories. <br> Here is to many more
+                        adventures together!</p>
+                    <div id="final-image-container"></div>
+                    <button id="replay-btn" class="secondary-btn">Replay Journey</button>
+                </div>
+            </div>
+
+            <div id="failure-modal" class="modal hidden">
+                <div class="modal-content glass-panel"
+                    style="border-color: #ff4444; box-shadow: 0 0 30px rgba(255, 68, 68, 0.3);">
+                    <h2 style="color: #ff4444; font-size: 2.5rem;">TIME'S UP</h2>
+                    <p style="font-size: 1.5rem; margin: 1rem 0; font-family: var(--font-heading);">"pathetic you
+                        weaklings"</p>
+                    <button id="retry-btn" class="primary-btn pulse" style="background: #ff4444;">Try Again</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content glass-panel">
+                <h2>Settings</h2>
+                <div class="setting-item">
+                    <label>Time per Stage (sec)</label>
+                    <div class="adjuster">
+                        <button id="time-dec" class="small-btn">-</button>
+                        <span id="time-val">60</span>
+                        <button id="time-inc" class="small-btn">+</button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label>Piece count (Grid)</label>
+                    <div class="adjuster">
+                        <button id="piece-dec" class="small-btn">-</button>
+                        <span id="piece-val">4x4</span>
+                        <button id="piece-inc" class="small-btn">+</button>
+                    </div>
+                </div>
+                <button id="close-settings-btn" class="primary-btn">Save & Close</button>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
